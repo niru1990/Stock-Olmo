@@ -42,5 +42,17 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ]
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niru1990/Stock-Olmo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niru1990/Stock-Olmo/issues"
+  },
+  "homepage": "https://github.com/niru1990/Stock-Olmo#readme"
 }
