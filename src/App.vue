@@ -7,11 +7,16 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ingresoMP from './components/ingresoMP.vue'
+import ingresoPT from './components/ingresoPT.vue'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    ingresoMP,
+    ingresoPT
+
   }
 }
 </script>
