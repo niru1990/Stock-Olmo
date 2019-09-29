@@ -1,12 +1,13 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Hola Grupo!!!! Bienvenidos a Stock Olmo!"/>
+    <HelloWorld msg="Bienvendio a Stock - Olmo el mejor sistema para manejar stock."/>
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'app',
