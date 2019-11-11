@@ -16,15 +16,13 @@
 		</div>
 
 		<div v-expand="isExpanded" class="options expand">
-			<div
-				v-for="option in configOptions"
-				class="option"
-				@click="setCurrentSelectedOption(option);"
-			>{{ option.value }}
+			<div v-for="option in configOptions" class="option" @click="setCurrentSelectedOption(option);" >
+			{{ option.value }}
 			</div>
 		</div>
 	</div>
 </template>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 	export default {
 		name: "dropdown",
@@ -35,6 +33,9 @@
 				optionHeight: 35,
 				configOptions: [
 					{
+						value: "Home"
+					},
+					{
 						value: "Productos"
 					},
 					{
@@ -43,24 +44,24 @@
 					{
 						value: "Clientes"
 					},
-          {
-            value: "Proveedores"
-          },
-          {
-            value: "Reportes"
-          },
-          {
-            value: "Control de stock"
-          },
-          {
-            value: "Orden de compra"
-          },
-          {
-            value: "Orden de produccion"
-          },
-          {
-            value: "Orden de pedido"
-          }
+					{
+						value: "Proveedores"
+					},
+					{
+						value: "Reportes"
+					},
+					{
+						value: "Control de stock"
+					},
+					{
+						value: "Orden de compra"
+					},
+					{
+						value: "Orden de produccion"
+					},
+					{
+						value: "Orden de pedido"
+					}
 				],
 				backgroundColor: "#cde4f5",
 				backgroundExpandedColor: "#fff",
@@ -125,7 +126,23 @@
 			toggleRiskLevels() {
 				this.isExpanded = !this.isExpanded;
 			},
-			setCurrentSelectedOption(option) {
+			setCurrentSelectedOption(option) {//ACA
+				debugger;
+
+				
+				switch (option.value) {
+  					case 'Home':
+    					console.log('Muestro la pagina principal');
+						
+    				break;
+  					case 'Productos':
+    					console.log('Muestro el componente del AMB de productos');
+						window.location.replace("./" + option.value + ".vue");
+    				break;
+  					default:
+    					console.log('Error 404, no existe el componente ' + option.value);
+				}
+
 				this.$emit("setSelectedOption", option);
 			},
 			setConfigData() {

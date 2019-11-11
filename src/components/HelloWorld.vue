@@ -1,7 +1,12 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>{{msg2}}</h2>
+    <div style="float:left">
+        <img alt="Vue logo" src="../assets/logo.png">
+    </div>
+    <div style="float:left; margin-top:50px; width:70%; ">
+      <h1>{{ msg }}</h1>
+      <h2>{{msg2}}</h2>
+    </div>
   </div>
 </template>
 
@@ -10,7 +15,7 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String,
-    msg2: String
+    msg2: String,
   }
 }
 </script>
