@@ -6,6 +6,7 @@ var demo = new Vue({
         nombre: '',
         precio: '',
         cantidad: '',
+        cliente: '',
         // Ver o no ver el formulario de actualizar
         formActualizar: false,
         // La posición de tu lista donde te gustaría actualizar 
@@ -34,6 +35,22 @@ var demo = new Vue({
             this.precio = '';
             this.cantidad = '';
         },
+        crearOrden: function () {
+            this.ordenes.push({
+                cliente: this.cliente,
+                id: this.id,
+                cantidad: this.cantidad
+
+            });
+            this.cliente = '';
+            this.id = '';
+            this.cantidad = '';
+        },
+
+        descontarStock: function (articulo_id, cant) {
+            this.articulos[articulo_id].cantidad = cant;
+        },
+
         verFormActualizar: function (articulo_id) {
             // Antes de mostrar el formulario de actualizar, rellenamos sus campos
             this.idActualizar = articulo_id;
@@ -45,17 +62,12 @@ var demo = new Vue({
         },
         borrarArticulo: function (articulo_id) {
             //Borramos de la lista
-            console.log(articulo_id)
-
             this.articulos.splice(articulo_id, 1);
-            this.formActualizar = false;
 
         },
 
         guardarActualizacion: function (articulo_id) {
             // Ocultamos nuestro formulario de actualizar
-            console.log(articulo_id)
-
             this.formActualizar = false;
             this.articulos[articulo_id].nombre = this.nombreActualizar;
             this.articulos[articulo_id].precio = this.precioActualizar;
