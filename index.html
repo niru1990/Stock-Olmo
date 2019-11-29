@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Stock Olmo Basic</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+        integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <img src="logo_100x100.jpg" />
+
+        <section class="form-control">
+            <form action="" class="text-center">
+                <input v-model="nombre" @keyup.enter="crearArticulo" type="text" name="nombre" placeholder="Articulo"
+                    class="form-control">
+                <input v-model="precio" @keyup.enter="crearArticulo" type="number" name="precio" placeholder="Precio"
+                    class="form-control">
+                <input v-model="cantidad" @keyup.enter="crearArticulo" type="number" name="cantidad"
+                    placeholder="Cantidad" class="form-control">
+                <!-- Botón para añadir -->
+                <input @click="crearArticulo" type="button" value="Agregar" class="btn btn-success">
+            </form>
+        </section>
+
+        <section class="data">
+            <caption>Listado Articulos</caption>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Cantidad</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(articulo, index) in articulos">
+                        <td>{{ articulo.id }}</td>
+                        <td>
+                            <span v-if="formActualizar && idActualizar == index">
+                                <input v-model="nombreActualizar" class="form-control">
+                            </span>
+                            <span v-else>
+                                {{ articulo.nombre }}
+                            </span>
+                        </td>
+                        <td>
+                            <span v-if="formActualizar && idActualizar == index">
+                                <input v-model="precioActualizar" class="form-control">
+                            </span>
+                            <span v-else>
+                                {{ articulo.precio }}
+                            </span>
+                        </td>
+                        <td>
+                            <span v-if="formActualizar && idActualizar == index">
+                                <input v-model="cantidadActualizar" class="form-control">
+                            </span>
+                            <span v-else>
+                                {{ articulo.cantidad }}
+                            </span>
+                        </td>
+                        <td>
+                            <!-- Botón para guardar la información actualizada -->
+                            <span v-if="formActualizar && idActualizar == index">
+                                <button @click="guardarActualizacion(index)" class="btn btn-success">Guardar</button>
+                            </span>
+                            <span v-else>
+                                <!-- Botón para mostrar el formulario de actualizar -->
+                                <button @click="verFormActualizar(index)" class="btn btn-warning">Actualizar</button>
+                                <!-- Botón para borrar -->
+                                <button @click="borrarArticulo(index)" class="btn btn-danger">Borrar</button>
+                            </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+</body>
+<script src="app.js"></script>
+
+</html>
