@@ -90,10 +90,10 @@
                 <section class="form-control">
                     <form action="" class="text-center">
                         <input v-model="cliente" @keyup.enter="crearOrden" type="text" name="cliente"
-                            placeholder="cliente" class="form-control">
+                            placeholder="Cliente" class="form-control">
                         <input v-model="id" @keyup.enter="crearOrden" type="number" name="id" placeholder="id"
                             class="form-control">
-                        <input v-model="cantidad" @keyup.enter="crearOrden" type="number" name="cantidad"
+                        <input v-model="cantOrden" @keyup.enter="crearOrden" type="number" name="cantOrden"
                             placeholder="Cantidad" class="form-control">
                         <!-- Botón para agregar -->
                         <input @click="crearOrden" type="button" value="Agregar Art a Orden" class="btn btn-success">
@@ -102,15 +102,13 @@
             </div>
             <div class="container">
                 <section class="data">
-                    <h4>Listado Articulos en Stock</h4>
+                    <h4>Orden de Compra</h4>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Cliente</th>
                                 <th scope="col">id</th>
-                                <th scope="col">Precio</th>
                                 <th scope="col">Cantidad</th>
-                                <th scope="col">Importe Total</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -137,7 +135,7 @@
                                         <input v-model="cantidadActualizar" class="form-control">
                                     </span>
                                     <span v-else>
-                                        {{ articulo.cantidad }}
+                                        {{ orden.cantOrden }}
                                     </span>
                                 </td>
                                 <td>

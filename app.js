@@ -7,6 +7,7 @@ var demo = new Vue({
         precio: '',
         cantidad: '',
         cliente: '',
+        cantOrden: '',
         // Ver o no ver el formulario de actualizar
         formActualizar: false,
         // La posición de tu lista donde te gustaría actualizar 
@@ -23,6 +24,7 @@ var demo = new Vue({
     },
 
     methods: {
+        // metodos para el manejo de articulos en stock
         crearArticulo: function () {
             this.articulos.push({
                 id: + new Date(),
@@ -34,21 +36,6 @@ var demo = new Vue({
             this.nombre = '';
             this.precio = '';
             this.cantidad = '';
-        },
-        crearOrden: function () {
-            this.ordenes.push({
-                cliente: this.cliente,
-                id: this.id,
-                cantidad: this.cantidad
-
-            });
-            this.cliente = '';
-            this.id = '';
-            this.cantidad = '';
-        },
-
-        descontarStock: function (articulo_id, cant) {
-            this.articulos[articulo_id].cantidad = cant;
         },
 
         verFormActualizar: function (articulo_id) {
@@ -72,6 +59,24 @@ var demo = new Vue({
             this.articulos[articulo_id].nombre = this.nombreActualizar;
             this.articulos[articulo_id].precio = this.precioActualizar;
             this.articulos[articulo_id].cantidad = this.cantidadActualizar;
-        }
+        },
+
+        //metodos para el manejo de la Orden de Compra
+        crearOrden: function () {
+            this.ordenes.push({
+                cliente: this.cliente,
+                id: this.id,
+                cantOrden: this.cantOrden
+
+            });
+            this.cliente = '';
+            this.id = '';
+            this.cantOrden = '';
+        },
+
+        descontarStock: function (articulo_id, cant) {
+            this.articulos[articulo_id].cantidad = cant;
+        },
+
     }
 });
