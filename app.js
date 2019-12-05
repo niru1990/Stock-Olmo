@@ -5,7 +5,8 @@ var demo = new Vue({
     data: {
         nombre: '',
         precio: '',
-        cantidad: '',
+        cantInicial: '',
+        cantActualizada: '',
         cliente: '',
         cantOrden: '',
         // Ver o no ver el formulario de actualizar
@@ -43,12 +44,14 @@ var demo = new Vue({
                 id: + new Date(),
                 nombre: this.nombre,
                 precio: this.precio,
-                cantidad: this.cantidad
+                cantInicial: this.cantInicial,
+                cantActualizada: this.cantInicial - this.cantOrden
             });
             // Vaciamos el formulario de añadir
             this.nombre = '';
             this.precio = '';
-            this.cantidad = '';
+            this.cantInicial = '';
+
         },
 
         verFormActualizar: function (articulo_id) {
@@ -56,7 +59,7 @@ var demo = new Vue({
             this.idActualizar = articulo_id;
             this.nombreActualizar = this.articulos[articulo_id].nombre;
             this.precioActualizar = this.articulos[articulo_id].precio;
-            this.cantidadActualizar = this.articulos[articulo_id].cantidad;
+            this.cantidadActualizar = this.articulos[articulo_id].cantInicial;
             // Mostramos el formulario
             this.formActualizar = true;
         },
@@ -71,7 +74,7 @@ var demo = new Vue({
             this.formActualizar = false;
             this.articulos[articulo_id].nombre = this.nombreActualizar;
             this.articulos[articulo_id].precio = this.precioActualizar;
-            this.articulos[articulo_id].cantidad = this.cantidadActualizar;
+            this.articulos[articulo_id].cantInicial = this.cantidadActualizar;
         },
 
         //*********************************************/
@@ -112,24 +115,25 @@ var demo = new Vue({
         },
 
         descontarStockArticulos: function (articulo_id, cant) {
-            return this.articulos[articulo_id].cantidad -= cant;
+            this.cantActualizada = this.articulos[articulo_id].cantInicial - cant;
+            return result;
 
         },
 
-        buscarArticulo: function (articulo_id) {
-            let artEncontrado = false;
-            let art = null;
-            let i = 0;
-            while (i < articulos.length && !artEncontrado) {
-                if (articulos[i].id == articulo_id) {
-                    art = articulos[i];
-                    artEncontrado = true;
-                } else {
-                    i++;
-                }
-            }
-            return art
-        }
+        // buscarArticulo: function (articulo_id) {
+        //     let artEncontrado = false;
+        //     let art = null;
+        //     let i = 0;
+        //     while (i < articulos.length && !artEncontrado) {
+        //         if (articulos[i].id == articulo_id) {
+        //             art = articulos[i];
+        //             artEncontrado = true;
+        //         } else {
+        //             i++;
+        //         }
+        //     }
+        //     return art
+        // }
 
 
     }

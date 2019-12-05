@@ -20,7 +20,7 @@
                         placeholder="Articulo" class="form-control">
                     <input v-model="precio" @keyup.enter="crearArticulo" type="number" name="precio"
                         placeholder="Precio" class="form-control">
-                    <input v-model="cantidad" @keyup.enter="crearArticulo" type="number" name="cantidad"
+                    <input v-model="cantInicial" @keyup.enter="crearArticulo" type="number" name="cantInicial"
                         placeholder="Cantidad" class="form-control">
                     <!-- Botón para agregar -->
                     <input @click="crearArticulo" type="button" value="Agregar Art a Stock" class="btn btn-success">
@@ -66,7 +66,7 @@
                                     <input v-model="cantidadActualizar" class="form-control">
                                 </span>
                                 <span v-else>
-                                    {{ articulo.cantidad }}
+                                    {{ articulo.cantInicial }}
                                 </span>
                             </td>
                             <td>
@@ -195,7 +195,7 @@
                                         <input v-model="cantidadActualizarSR" class="form-control">
                                     </span>
                                     <span v-else>
-                                        {{ articulo.cantidad }}
+                                        {{ articulo.cantActualizada }}
                                     </span>
                                 </td>
 
