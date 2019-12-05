@@ -45,7 +45,7 @@ var demo = new Vue({
                 nombre: this.nombre,
                 precio: this.precio,
                 cantInicial: this.cantInicial,
-                cantActualizada: this.cantInicial - this.cantOrden
+                cantActualizada: this.cantInicial
             });
             // Vaciamos el formulario de añadir
             this.nombre = '';
@@ -84,12 +84,17 @@ var demo = new Vue({
             this.ordenes.push({
                 cliente: this.cliente,
                 id: this.id,
-                cantOrden: this.cantOrden
+                cantOrden: this.cantOrden,
 
             });
+            // let idEncontrado = buscarArticulo(this.id);
+
+            let idEncontrado = this.articulos.findIndex(id => id == this.id);
+            this.articulos[idEncontrado].cantActualizada = this.articulos[idEncontrado].cantInicial - this.cantOrden;
             this.cliente = '';
             this.id = '';
             this.cantOrden = '';
+
         },
 
         verFormActualizarOC: function (articulo_id) {
@@ -120,20 +125,18 @@ var demo = new Vue({
 
         },
 
-        // buscarArticulo: function (articulo_id) {
-        //     let artEncontrado = false;
-        //     let art = null;
-        //     let i = 0;
-        //     while (i < articulos.length && !artEncontrado) {
-        //         if (articulos[i].id == articulo_id) {
-        //             art = articulos[i];
-        //             artEncontrado = true;
-        //         } else {
-        //             i++;
-        //         }
-        //     }
-        //     return art
-        // }
+        buscarArticulo: function (articulo_id) {
+            let artEncontrado = false;
+            let i = 0;
+            while (i < this.articulos.lenght && !artEncontrado) {
+                if (this.articulos[i].id == articulo_id) {
+                    artEncontrado = true;
+                } else {
+                    i++;
+                }
+            }
+            return i
+        }
 
 
     }
