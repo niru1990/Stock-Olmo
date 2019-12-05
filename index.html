@@ -155,6 +155,8 @@
                     </table>
                 </section>
             </div>
+
+
             <!-- LISTADO ACTUALIZADO DEL STOCK -->
             <div class="container">
                 <section class="data">
@@ -193,7 +195,7 @@
                                         <input v-model="cantidadActualizar" class="form-control">
                                     </span>
                                     <span v-else>
-                                        {{ articulo.cantidad }}
+                                        {{ articulo.cantidad - 4 }}
                                     </span>
                                 </td>
                                 <td>

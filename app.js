@@ -106,7 +106,23 @@ var demo = new Vue({
 
         descontarStockArticulos: function (articulo_id, cant) {
             this.articulos[articulo_id].cantidad -= cant;
+        },
+
+        buscarArticulo: function (articulo_id) {
+            let artEncontrado = false;
+            let art = null;
+            let i = 0;
+            while (i < articulos.length && !artEncontrado) {
+                if (articulos[i].id == articulo_id) {
+                    art = articulos[i];
+                    artEncontrado = true;
+                } else {
+                    i++;
+                }
+            }
+            return art
         }
+
 
     }
 });
