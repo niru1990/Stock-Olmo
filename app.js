@@ -112,7 +112,8 @@ var demo = new Vue({
         },
 
         descontarStockArticulos: function (articulo_id, cant) {
-            this.articulos[articulo_id].cantidad -= cant;
+            return this.articulos[articulo_id].cantidad -= cant;
+
         },
 
         buscarArticulo: function (articulo_id) {

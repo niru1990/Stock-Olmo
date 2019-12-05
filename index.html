@@ -172,27 +172,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(articulo, index) in articulos">
+                            <tr v-for="(articulo, ind) in articulos">
                                 <td>{{ articulo.id }}</td>
                                 <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == index">
-                                        <input v-model="nombreActualizar" class="form-control">
+                                    <span v-if="formActualizarSR && idActualizarSR == ind">
+                                        <input v-model="nombreActualizarSR" class="form-control">
                                     </span>
                                     <span v-else>
                                         {{ articulo.nombre }}
                                     </span>
                                 </td>
                                 <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == index">
-                                        <input v-model="precioActualizar" class="form-control">
+                                    <span v-if="formActualizarSR && idActualizarSR == ind">
+                                        <input v-model="precioActualizarSR" class="form-control">
                                     </span>
                                     <span v-else>
                                         {{ articulo.precio }}
                                     </span>
                                 </td>
                                 <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == index">
-                                        <input v-model="cantidadActualizar" class="form-control">
+                                    <span v-if="formActualizarSR && idActualizarSR == ind">
+                                        <input v-model="cantidadActualizarSR" class="form-control">
                                     </span>
                                     <span v-else>
                                         {{ articulo.cantidad }}
