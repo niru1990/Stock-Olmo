@@ -27,6 +27,8 @@
                 </form>
             </section>
         </div>
+        <!-- COMIENZA FORMULARIO DE INGRESO DE STOCK -->
+
         <div class="container">
             <section class="data">
                 <h4>Listado Articulos en Stock</h4>
@@ -86,6 +88,8 @@
                 </table>
             </section>
             <div>
+
+                <!-- COMIENZA FORMULARIO DE INGRESO DE ORDEN DE COMPRA -->
                 <h4>Ingrese Orden de Compra</h4>
                 <section class="form-control">
                     <form action="" class="text-center">
@@ -106,33 +110,26 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">Cliente</th>
                                 <th scope="col">id</th>
+                                <th scope="col">Cliente</th>
                                 <th scope="col">Cantidad</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(orden, index) in ordenes">
-                                <td>{{ orden.cliente }}</td>
+                            <tr v-for="(orden, indice) in ordenes">
+                                <td>{{ orden.id }}</td>
                                 <td>
-                                    <span v-if="formActualizar && idActualizar == index">
-                                        <input v-model="nombreActualizar" class="form-control">
+                                    <span v-if="formActualizarOC && idActualizarOC == indice">
+                                        <input v-model="clienteActualizarOC" class="form-control">
                                     </span>
                                     <span v-else>
-                                        {{ orden.id }}
+                                        {{ orden.cliente }}
                                     </span>
                                 </td>
+
                                 <td>
-                                    <span v-if="formActualizar && idActualizar == index">
-                                        <input v-model="precioActualizar" class="form-control">
-                                    </span>
-                                    <span v-else>
-                                        {{ orden.precio }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span v-if="formActualizar && idActualizar == index">
-                                        <input v-model="cantidadActualizar" class="form-control">
+                                    <span v-if="formActualizarOC && idActualizarOC == indice">
+                                        <input v-model="cantidadActualizarOC" class="form-control">
                                     </span>
                                     <span v-else>
                                         {{ orden.cantOrden }}
@@ -140,16 +137,17 @@
                                 </td>
                                 <td>
                                     <!-- Botón para guardar la información actualizada -->
-                                    <span v-if="formActualizar && idActualizar == index">
-                                        <button @click="guardarActualizacion(index)"
-                                            class="btn btn-success">Guardar</button>
+                                    <span v-if="formActualizarOC && idActualizarOC == indice">
+                                        <button @click="guardarActualizacionOC(indice)" class="btn btn-success">Guardar
+                                            Art de OC</button>
                                     </span>
                                     <span v-else>
                                         <!-- Botón para mostrar el formulario de actualizar -->
-                                        <button @click="verFormActualizar(index)"
-                                            class="btn btn-warning">Actualizar</button>
+                                        <button @click="verFormActualizarOC(indice)" class="btn btn-warning">Actualizar
+                                            Articulo OC</button>
                                         <!-- Botón para borrar -->
-                                        <button @click="borrarArticulo(index)" class="btn btn-danger">Borrar</button>
+                                        <button @click="borrarArticuloOC(indice)" class="btn btn-danger">Borrar Art de
+                                            OC</button>
                                     </span>
                                 </td>
                             </tr>

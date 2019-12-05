@@ -20,8 +20,14 @@ var demo = new Vue({
         cantidadActualizar: '',
         // Lista de articulos
         articulos: [],
-        ordenes: []
+        ordenes: [],
+        formActualizarOC: false,
+        idActualizarOC: -1,
+        clienteActualizarOC: '',
+        cantidadActualizarOC: ''
     },
+
+
 
     methods: {
         // metodos para el manejo de articulos en stock
@@ -61,6 +67,8 @@ var demo = new Vue({
             this.articulos[articulo_id].cantidad = this.cantidadActualizar;
         },
 
+        //*********************************************/
+        //*********************************************/
         //metodos para el manejo de la Orden de Compra
         crearOrden: function () {
             this.ordenes.push({
@@ -74,9 +82,31 @@ var demo = new Vue({
             this.cantOrden = '';
         },
 
-        descontarStock: function (articulo_id, cant) {
-            this.articulos[articulo_id].cantidad = cant;
+        verFormActualizarOC: function (articulo_id) {
+            // Antes de mostrar el formulario de actualizar, rellenamos sus campos
+            this.idActualizarOC = this.ordenes[articulo_id].id;
+            this.clienteActualizarOC = this.ordenes[articulo_id].cliente;
+            this.cantidadActualizarOC = this.ordenes[articulo_id].cantOrden;
+            // Mostramos el formulario
+            this.formActualizarOC = true;
         },
+
+        borrarArticuloOC: function (articulo_id) {
+            //Borramos de la lista
+            this.ordenes.splice(articulo_id, 1);
+
+        },
+
+        guardarActualizacionOC: function (articulo_id) {
+            // Ocultamos nuestro formulario de actualizar
+            this.formActualizarOC = false;
+            this.ordenes[articulo_id].nombre = this.clienteActualizarOC;
+            this.ordenes[articulo_id].cantidad = this.cantidadActualizarOC;
+        },
+
+        descontarStockArticulos: function (articulo_id, cant) {
+            this.articulos[articulo_id].cantidad -= cant;
+        }
 
     }
 });
