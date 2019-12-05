@@ -24,7 +24,14 @@ var demo = new Vue({
         formActualizarOC: false,
         idActualizarOC: -1,
         clienteActualizarOC: '',
-        cantidadActualizarOC: ''
+        cantidadActualizarOC: '',
+
+        formActualizarSR: false,
+        idActualizarSR: -1,
+        nombreActualizarSR: '',
+        precioActualizarSR: '',
+        cantidadActualizarSR: ''
+
     },
 
 

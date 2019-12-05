@@ -175,7 +175,7 @@
                             <tr v-for="(articulo, index) in articulos">
                                 <td>{{ articulo.id }}</td>
                                 <td>
-                                    <span v-if="formActualizar && idActualizar == index">
+                                    <span v-if="formActualizarSR && idActualizarSR == index">
                                         <input v-model="nombreActualizar" class="form-control">
                                     </span>
                                     <span v-else>
@@ -183,7 +183,7 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span v-if="formActualizar && idActualizar == index">
+                                    <span v-if="formActualizarSR && idActualizarSR == index">
                                         <input v-model="precioActualizar" class="form-control">
                                     </span>
                                     <span v-else>
@@ -191,27 +191,14 @@
                                     </span>
                                 </td>
                                 <td>
-                                    <span v-if="formActualizar && idActualizar == index">
+                                    <span v-if="formActualizarSR && idActualizarSR == index">
                                         <input v-model="cantidadActualizar" class="form-control">
                                     </span>
                                     <span v-else>
-                                        {{ articulo.cantidad - 4 }}
+                                        {{ articulo.cantidad }}
                                     </span>
                                 </td>
-                                <td>
-                                    <!-- Botón para guardar la información actualizada -->
-                                    <span v-if="formActualizar && idActualizar == index">
-                                        <button @click="guardarActualizacion(index)"
-                                            class="btn btn-success">Guardar</button>
-                                    </span>
-                                    <span v-else>
-                                        <!-- Botón para mostrar el formulario de actualizar -->
-                                        <button @click="verFormActualizar(index)"
-                                            class="btn btn-warning">Actualizar</button>
-                                        <!-- Botón para borrar -->
-                                        <button @click="borrarArticulo(index)" class="btn btn-danger">Borrar</button>
-                                    </span>
-                                </td>
+
                             </tr>
                         </tbody>
                     </table>
