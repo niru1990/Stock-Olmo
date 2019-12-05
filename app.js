@@ -75,6 +75,8 @@ var demo = new Vue({
             this.articulos[articulo_id].nombre = this.nombreActualizar;
             this.articulos[articulo_id].precio = this.precioActualizar;
             this.articulos[articulo_id].cantInicial = this.cantidadActualizar;
+            this.articulos[articulo_id].cantActualizada = this.cantidadActualizar;
+
         },
 
         //*********************************************/
@@ -118,7 +120,11 @@ var demo = new Vue({
             // Ocultamos nuestro formulario de actualizar
             this.formActualizarOC = false;
             this.ordenes[articulo_id].cliente = this.clienteActualizarOC;
+            let diferencia = this.ordenes[articulo_id].cantOrden - this.cantidadActualizarOC;
             this.ordenes[articulo_id].cantOrden = this.cantidadActualizarOC;
+            this.articulos[articulo_id].cantActualizada = this.articulos[articulo_id].cantActualizada + diferencia;
+
+
         },
 
         descontarStockArticulos: function (articulo_id, cant) {
