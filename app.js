@@ -84,7 +84,7 @@ var demo = new Vue({
 
         verFormActualizarOC: function (articulo_id) {
             // Antes de mostrar el formulario de actualizar, rellenamos sus campos
-            this.idActualizarOC = this.ordenes[articulo_id].id;
+            this.idActualizarOC = articulo_id;
             this.clienteActualizarOC = this.ordenes[articulo_id].cliente;
             this.cantidadActualizarOC = this.ordenes[articulo_id].cantOrden;
             // Mostramos el formulario
@@ -100,8 +100,8 @@ var demo = new Vue({
         guardarActualizacionOC: function (articulo_id) {
             // Ocultamos nuestro formulario de actualizar
             this.formActualizarOC = false;
-            this.ordenes[articulo_id].nombre = this.clienteActualizarOC;
-            this.ordenes[articulo_id].cantidad = this.cantidadActualizarOC;
+            this.ordenes[articulo_id].cliente = this.clienteActualizarOC;
+            this.ordenes[articulo_id].cantOrden = this.cantidadActualizarOC;
         },
 
         descontarStockArticulos: function (articulo_id, cant) {
