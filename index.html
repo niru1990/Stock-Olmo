@@ -173,31 +173,11 @@
                         </thead>
                         <tbody>
                             <tr v-for="(articulo, ind) in articulos">
+
                                 <td>{{ articulo.id }}</td>
-                                <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == ind">
-                                        <input v-model="nombreActualizarSR" class="form-control">
-                                    </span>
-                                    <span v-else>
-                                        {{ articulo.nombre }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == ind">
-                                        <input v-model="precioActualizarSR" class="form-control">
-                                    </span>
-                                    <span v-else>
-                                        {{ articulo.precio }}
-                                    </span>
-                                </td>
-                                <td>
-                                    <span v-if="formActualizarSR && idActualizarSR == ind">
-                                        <input v-model="cantidadActualizarSR" class="form-control">
-                                    </span>
-                                    <span v-else>
-                                        {{ articulo.cantActualizada }}
-                                    </span>
-                                </td>
+                                <td>{{ articulo.nombre }}</td>
+                                <td>{{ articulo.precio }} </td>
+                                <td>{{ articulo.cantActualizada }}</td>
 
                             </tr>
                         </tbody>
@@ -210,3 +190,34 @@
 <script src="app.js"></script>
 
 </html>
+
+<!-- <tbody>
+        <tr v-for="(articulo, ind) in articulos">
+            <td>{{ articulo.id }}</td>
+            <td>
+                <span v-if="formActualizarSR && idActualizarSR == ind">
+                    <input v-model="nombreActualizarSR" class="form-control">
+                </span>
+                <span v-else>
+                    {{ articulo.nombre }}
+                </span>
+            </td>
+            <td>
+                <span v-if="formActualizarSR && idActualizarSR == ind">
+                    <input v-model="precioActualizarSR" class="form-control">
+                </span>
+                <span v-else>
+                    {{ articulo.precio }}
+                </span>
+            </td>
+            <td>
+                <span v-if="formActualizarSR && idActualizarSR == ind">
+                    <input v-model="cantidadActualizarSR" class="form-control">
+                </span>
+                <span v-else>
+                    {{ articulo.cantActualizada }}
+                </span>
+            </td>
+
+        </tr>
+    </tbody> -->

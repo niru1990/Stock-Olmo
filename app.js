@@ -87,10 +87,12 @@ var demo = new Vue({
                 cantOrden: this.cantOrden,
 
             });
-            // let idEncontrado = buscarArticulo(this.id);
+            let idEncontrado = this.articulos.findIndex(x => x.id == this.id);
+            this.articulos[idEncontrado].cantActualizada = this.articulos[idEncontrado].cantActualizada - this.cantOrden;
 
-            let idEncontrado = this.articulos.findIndex(id => id == this.id);
-            this.articulos[idEncontrado].cantActualizada = this.articulos[idEncontrado].cantInicial - this.cantOrden;
+            // let idEncontrado = buscarArticulo(this.id);
+            //let idEncontrado = this.articulos.findIndex(id => id == this.id);
+            //this.articulos[idEncontrado].cantActualizada = this.articulos[idEncontrado].cantInicial - this.cantOrden;
             this.cliente = '';
             this.id = '';
             this.cantOrden = '';
