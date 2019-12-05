@@ -77,6 +77,7 @@ var demo = new Vue({
             this.articulos[articulo_id].cantInicial = this.cantidadActualizar;
             this.articulos[articulo_id].cantActualizada = this.cantidadActualizar;
 
+
         },
 
         //*********************************************/
@@ -112,7 +113,10 @@ var demo = new Vue({
 
         borrarArticuloOC: function (articulo_id) {
             //Borramos de la lista
+
+            this.articulos[articulo_id].cantActualizada = parseInt(this.articulos[articulo_id].cantActualizada, 10) + parseInt(this.ordenes[articulo_id].cantOrden, 10);
             this.ordenes.splice(articulo_id, 1);
+
 
         },
 
