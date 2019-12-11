@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <ingresoMP />
+    <img alt="Vue logo" src="./assets/logo_100x100.jpg" />
     <ingresoPT />
+    <ingresoOC />
   </div>
 </template>
 
 <script>
-import ingresoMP from "./components/ingresoMP.vue";
+import ingresoOC from "./components/ingresoOC.vue";
 import ingresoPT from "./components/ingresoPT.vue";
 
 export default {
   name: "app",
   components: {
-    ingresoMP,
+    ingresoOC,
     ingresoPT
   }
 };
