@@ -1,41 +1,98 @@
 <template>
-  <div class="container">
-    <h4>Ingrese Orden de Compra</h4>
-    <!-- <section class="form-control"> -->
-    <form action class="text-center">
-      <input
-        v-model="cliente"
-        @keyup.enter="crearOrden"
-        type="text"
-        name="cliente"
-        placeholder="Cliente"
-        class="form-control"
-      />
-      <input
-        v-model="id"
-        @keyup.enter="crearOrden"
-        type="number"
-        name="id"
-        placeholder="id"
-        class="form-control"
-      />
-      <input
-        v-model="cantOrden"
-        @keyup.enter="crearOrden"
-        type="number"
-        name="cantOrden"
-        placeholder="Cantidad"
-        class="form-control"
-      />
-      <!-- Botón para agregar -->
-      <input
-        @click="crearOrden"
-        type="button"
-        value="Agregar artticulo a Orden"
-        class="btn btn-success"
-      />
-    </form>
-    <!-- </section> -->
+  <div class="ingresoOC">
+    <!-- COMIENZA FORMULARIO DE INGRESO DE ORDEN DE COMPRA -->
+    <div>
+      <div class="container">
+        <h4>Ingrese Orden de Compra</h4>
+        <section class="form-control">
+          <form action class="text-center">
+            <input
+              v-model="cliente"
+              @keyup.enter="crearOrden"
+              type="text"
+              name="cliente"
+              placeholder="Cliente"
+              class="form-control"
+            />
+            <input
+              v-model="id"
+              @keyup.enter="crearOrden"
+              type="number"
+              name="id"
+              placeholder="id"
+              class="form-control"
+            />
+            <input
+              v-model="cantOrden"
+              @keyup.enter="crearOrden"
+              type="number"
+              name="cantOrden"
+              placeholder="Cantidad"
+              class="form-control"
+            />
+            <!-- Botón para agregar -->
+            <input
+              @click="crearOrden"
+              type="button"
+              value="Agregar artticulo a Orden"
+              class="btn btn-success"
+            />
+          </form>
+        </section>
+      </div>
+      <div class="container">
+        <section class="data">
+          <h4>Listado Ordenes de Compra</h4>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Cliente</th>
+                <th scope="col">Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(orden, indice) in ordenes" v-bind:key="orden">
+                <td>{{ orden.id }}</td>
+                <td>
+                  <span v-if="formActualizarOC && idActualizarOC == indice">
+                    <input v-model="clienteActualizarOC" class="form-control" />
+                  </span>
+                  <span v-else>{{ orden.cliente }}</span>
+                </td>
+                <td>
+                  <span v-if="formActualizarOC && idActualizarOC == indice">
+                    <input v-model="cantidadActualizarOC" class="form-control" />
+                  </span>
+                  <span v-else>{{ orden.cantOrden }}</span>
+                </td>
+                <td>
+                  <!-- Botón para guardar la información actualizada -->
+                  <span v-if="formActualizarOC && idActualizarOC == indice">
+                    <button
+                      @click="guardarActualizacionOC(indice)"
+                      class="btn btn-success"
+                    >Guardar articulo de OC</button>
+                  </span>
+                  <span v-else>
+                    <!-- Botón para mostrar el formulario de actualizar -->
+                    <button
+                      @click="verFormActualizarOC(indice)"
+                      class="btn btn-warning"
+                    >Actualizar articulo OC</button>
+                    <!-- Botón para borrar -->
+                    <button
+                      @click="borrarArticuloOC(indice)"
+                      class="btn btn-danger"
+                    >Borrar articulo de OC</button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+    </div>
   </div>
 </template>
 
